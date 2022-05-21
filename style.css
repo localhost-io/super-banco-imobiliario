@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('card-machine/card-machine.css');
+@import url('card/card.css');
+
+
+
+* {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background: #8e9eab;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+/* ORGANIZA NOS LUGAR */
+
+.wallet-container {
+    display: flex;
+    transform: scale(.5);
+    /* overflow: scroll; */
+}
+
+.wallet-container .card {
+    margin-left: 8px;
+    transition: .3s;
+}
+
+.wallet-container .card:hover {
+    transform: scale(1.5);
+    transition: .5s;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.wallet-container .card:first-child {
+    margin-left: 0;
+}
+
+.card-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+/* .card {
+    display: none;
+} */
+
+
+
+.card-control .card {
+    position: absolute;
+    top: 37%;
+}
+
+.insert-left .card {
+    right: 60%;
+    transition: .5s;
+}
+
+.insert-left .card:hover {
+    right: 70%;
+}
+
+.insert-right .card {
+    left: 60%;
+    transition: .5s;
+}
+
+.insert-right .card:hover {
+    left: 70%;
+}

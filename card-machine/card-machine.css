@@ -1,0 +1,195 @@
+:root {
+    --color-cm-primary: #5A72CE;
+    --color-cm-secondary: #5462B8;
+    --color-cm-display-container: #131930;
+    --color-cm-display: #B4BAAD;
+    --color-cm-display-border: #DFE2E8;
+    --color-cm-btn-bg: #748AAA;
+    --color-cm-btn-bg-active: #6f84a3;
+    --color-cm-btn-text: #fff;
+    --color-cm-btn-m: #CFD78E;
+    --color-cm-btn-k: #75B8D8;
+    --color-cm-btn-x: #FF0011;
+    --cm-btn-radii: 8px;
+    --cm-insert-size: 100px;
+}
+
+.card-machine {
+    max-width: 250px;
+    max-height: 450px;
+    z-index: 99;
+    background-color: var(--color-cm-primary);
+    border: 3px solid var(--color-cm-secondary);
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.card-machine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    margin: 0 16px;
+
+}
+
+.logo-container {
+    height: 24px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.company-name {
+    font-size: 16px;
+}
+
+.company-name b {
+    font-size: 16px;
+}
+
+.display-container {
+    background-color: var(--color-cm-display-container);
+    padding: 24px 8px;
+    margin: 0 16px;
+    border-radius: 10px;
+}
+
+.display {
+    display: flex;
+    background-color: var(--color-cm-display);
+    border: 3px solid var(--color-cm-display-border);
+    border-radius: 10px;
+    align-items: baseline;
+    padding: 12px 8px;
+}
+
+.display-input {
+    font-family: 'Share Tech Mono';
+    text-align: right;
+    font-size: 32px;
+    flex: 1;
+}
+
+.mk {
+    font-family: 'Share Tech Mono';
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.card-machine-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    margin: 42px 0;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+
+    /* margin: 0 72px; */
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+
+.btn-container {
+    /* width: 80px;
+    height: 50px; */
+
+    background-color: var(--color-cm-secondary);
+    padding: 2px;
+    border-radius: calc(var(--cm-btn-radii) + 2px);
+
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: var(--color-cm-btn-bg);
+    color: var(--color-cm-btn-text);
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--cm-btn-radii);
+    padding: 4px 16px;
+    transition: all .07s ease;
+    border-width: 0px 3px 3px 0px;
+    border-style: solid;
+    border-color: rgba(51, 51, 51, 0.2);
+
+}
+
+.btn:active,
+.active {
+    /* border-color: transparent; */
+    /* border-width: 0px 1px 1px 0px; */
+    background-color: var(--color-cm-btn-bg-active);
+    transform: translateY(1px);
+}
+
+.btn.btn-m {
+    color: var(--color-cm-btn-m);
+}
+
+.btn.btn-k {
+    color: var(--color-cm-btn-k);
+}
+
+.btn-x {
+    background-color: var(--color-cm-btn-x);
+}
+
+.card-insert-container {
+    position: relative;
+    top: -40px;
+}
+
+.card-insert-y {
+    transform: scaleY(1.5);
+}
+
+.card-insert-x {
+    border: 3px solid var(--color-cm-secondary);
+    width: var(--cm-insert-size);
+    height: var(--cm-insert-size);
+
+    position: relative;
+    border-radius: 16px;
+    transform: rotate(45deg);
+}
+
+
+.card-insert-left .card-insert-x {
+    left: calc((var(--cm-insert-size) / 3.5 * -1));
+}
+
+.card-insert-right .card-insert-x {
+    right: calc((var(--cm-insert-size) / 3.5 * -1));
+}
+
+.card-insert-container span {
+    color: var(--color-cm-secondary);
+    font-size: 28px;
+    font-weight: bold;
+
+    position: absolute;
+    line-height: 0px;
+    top: 50%;
+}
+
+.card-insert-left span {
+    right: calc(var(--cm-insert-size) / 4);
+}
+
+.card-insert-right span {
+    left: calc(var(--cm-insert-size) / 4);
+}

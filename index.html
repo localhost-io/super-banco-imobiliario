@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Banco imobiliario</title>
+</head>
+
+<body>
+    <main class="container">
+        <div class="animate__animated animate__slideInDown">
+            <div id="wallet" class="wallet-container"></div>
+        </div>
+        <div class="card-section">
+            <div class="card-control insert-left"> </div>
+            <div class="card-machine animate__animated animate__slideInUp">
+                <div class="card-machine-header">
+                    <div class="logo-container">
+                        <img src="assets/logo.png"
+                            alt="Logo da empresa estrela circulo vermelho com uma rosa dos ventos no centro e nome estrela a baixo">
+                    </div>
+                    <div class="company-container">
+                        <p class="company-name"><b>Safra</b>pay</p>
+                    </div>
+                </div>
+                <div class="display-container">
+                    <div class="display">
+                        <p id="display-input" class="display-input">0</p>
+                        <p class="mk"> </p>
+                    </div>
+                </div>
+                <div class="card-machine-body">
+                    <div class="card-insert-container card-insert-left">
+                        <span>+</span>
+                        <div class="card-insert-y">
+                            <div class="card-insert-x"></div>
+                        </div>
+                    </div>
+                    <div class="keyboard">
+                        <div class="btn-container">
+                            <div class="btn btn-m" data-key="m">M</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="-">-</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn btn-k" data-key="k">K</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="7">7</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="8">8</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="9">9</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="4">4</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="5">5</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="6">6</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="1">1</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="2">2</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="3">3</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn btn-x" data-key="Backspace">X</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key="0">0</div>
+                        </div>
+                        <div class="btn-container">
+                            <div class="btn" data-key=".">.</div>
+                        </div>
+                    </div>
+                    <div class="card-insert-container card-insert-right">
+                        <span>-</span>
+                        <div class="card-insert-y">
+                            <div class="card-insert-x"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-control insert-right"> </div>
+        </div>
+        <div>
+            Powered By
+        </div>
+    </main>
+    <audio id="click-audio" src="assets/click.mp3"></audio>
+    <script src="script.js"></script>
+    <script src="js/card-view.js"></script>
+</body>
+
+</html>

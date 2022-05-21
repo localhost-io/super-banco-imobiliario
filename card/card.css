@@ -1,0 +1,117 @@
+:root {
+    --color-card-primary: blue;
+    --color-card-tint: #fff;
+}
+
+.card-bg-0 {
+    background: linear-gradient(to right, #2a0845, #6441A5);
+}
+
+.card-bg-1 {
+    background: linear-gradient(to right, #000000, #434343);
+}
+
+.card-bg-2 {
+    background: linear-gradient(to right, #fe8c00, #f83600);
+
+    /* background: linear-gradient(to right, #2980b9, #2c3e50); */
+}
+
+.card-bg-3 {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+.card-bg-4 {
+    background: linear-gradient(to right, #00bf8f, #001510);
+}
+
+.card-bg-5 {
+    background: linear-gradient(to right, #fc00ff, #00dbde);
+
+}
+
+.card-bg-6 {
+    background: linear-gradient(to right, #f46b45, #eea849);
+}
+
+.card * {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.card-flip {
+    transform: rotate(180deg);
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    /* position: relative; */
+    /* overflow: hidden; */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: var(--color-card-primary); */
+    width: 300px;
+    height: 200px;
+    border-radius: 16px;
+    padding: 8px;
+    color: var(--color-card-tint);
+}
+
+.card img {
+    /* width: 100%; */
+    height: 100%;
+    background-clip: contain;
+}
+
+.card-body {
+    margin-top: 16px;
+    padding: 0 24px;
+}
+
+.card-company {
+    height: 40px;
+    align-self: flex-end;
+    margin-right: 16px;
+}
+
+.card-chip {
+    height: 40px;
+}
+
+.card-number {
+    padding-top: 4px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.card-number span {
+    font-size: 18px;
+}
+
+.card-validate {
+    font-size: 12px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-holder-name {
+    font-size: 14px;
+    margin-left: 24px;
+}
+
+.card-brand {
+    height: 40px;
+    align-self: flex-end;
+}
