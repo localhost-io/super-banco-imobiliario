@@ -1,7 +1,8 @@
-var cardLeft;
-var cardRight;
+var cardDestin;
+var cardOrigin;
 
 window.onload = () => {
+  insertDefaultsCards();
   initCardMachine();
   renderWallet();
 };
@@ -30,7 +31,12 @@ function initCardMachine() {
         }
 
         setTimeout(() => {
+          const cardDestinElement = document.querySelector('.card-control.insert-left .card');
+          const cardOriginElement = document.querySelector('.card-control.insert-right .card');
+
           alert("transfere " + textElement.textContent);
+          const value = parseFloat(textElement.textContent);
+          transfere(cardOriginElement.id, cardDestinElement.id, value);
           textElement.textContent = "0";
           mOrK.textContent = null;
         }, 1500);
@@ -58,12 +64,7 @@ function initCardMachine() {
 function renderWallet() {
   const walletElement = document.getElementById("wallet");
 
-  const cards = Array(6).fill({
-    id: "1",
-    holderName: "Deivid F. Oliveira",
-    number: ["1233", "2342", "1231", "1232"],
-    validate: "00/00",
-  });
+  const cards = getCards();
 
   for (let i in cards) {
     const card = cards[i];
@@ -72,22 +73,22 @@ function renderWallet() {
 
     cardElement.onclick = function () {
       const clone = cardElement.cloneNode(true);
-      if (!cardRight || !cardLeft) {
+      if (!cardOrigin || !cardDestin) {
         cardElement.style.display = "none";
       }
-      if (!cardRight) {
-        cardRight = true;
+      if (!cardOrigin) {
+        cardOrigin = true;
         insertCardRight(clone);
         clone.onclick = () => {
-          cardRight = false;
+          cardOrigin = false;
           cardElement.style.display = "block";
           removeCardRight(clone);
         };
-      } else if (cardRight && !cardLeft) {
-        cardLeft = true;
+      } else if (cardOrigin && !cardDestin) {
+        cardDestin = true;
         insertCardLeft(clone);
         clone.onclick = () => {
-          cardLeft = false;
+          cardDestin = false;
           cardElement.style.display = "block";
           removeCardLeft(clone);
         };
