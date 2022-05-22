@@ -31,13 +31,17 @@ function initCardMachine() {
         }
 
         setTimeout(async () => {
-          const cardDestinyElement = document.querySelector('.card-control.insert-left .card');
-          const cardOriginElement = document.querySelector('.card-control.insert-right .card');
+          const cardDestinyElement = document.querySelector(
+            ".card-control.insert-left .card"
+          );
+          const cardOriginElement = document.querySelector(
+            ".card-control.insert-right .card"
+          );
 
           if (!cardDestinyElement) {
-            alert('Escolha um cartão para receber o valor');
+            alert("Escolha um cartão para receber o valor");
           } else if (!cardOriginElement) {
-            alert('Escolha um cartão para enviar o valor');
+            alert("Escolha um cartão para enviar o valor");
           } else {
             console.log("transfere " + textElement.textContent);
             const value = parseFloat(textElement.textContent);
@@ -47,9 +51,7 @@ function initCardMachine() {
             textElement.textContent = "0";
             mOrK.textContent = null;
           }
-
         }, 1500);
-          
       } else if ([...Array(10).keys(), "."].map(String).includes(dataKey)) {
         if (txt == 0) txt = "";
         let value = txt + btnElement.getAttribute("data-key");
@@ -86,21 +88,21 @@ function renderWallet() {
       if (!cardOrigin || !cardDestin) {
         cardElement.style.display = "none";
       }
-      if (!cardOrigin) {
-        cardOrigin = true;
-        insertCardRight(clone);
-        clone.onclick = () => {
-          cardOrigin = false;
-          cardElement.style.display = "block";
-          removeCardRight(clone);
-        };
-      } else if (cardOrigin && !cardDestin) {
+      if (!cardDestin) {
         cardDestin = true;
         insertCardLeft(clone);
         clone.onclick = () => {
           cardDestin = false;
           cardElement.style.display = "block";
           removeCardLeft(clone);
+        };
+      } else if (cardDestin && !cardOrigin) {
+        cardOrigin = true;
+        insertCardRight(clone);
+        clone.onclick = () => {
+          cardOrigin = false;
+          cardElement.style.display = "block";
+          removeCardRight(clone);
         };
       }
     };
