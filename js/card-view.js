@@ -132,13 +132,7 @@ async function showBalance(cardId, textElement) {
   return new Promise((resolve, reject) => {
     const cardStorage = getCardStorage(cardId);
     textElement.textContent = cardStorage.saldo;
-    setTimeout(() => {
-      try {
-        resolve();
-        console.log('realizado...')
-      } catch(e) {
-        reject(e);
-      }
-    }, 3000);
+    playAudioAsync(3, 150);
+    setTimeout(resolve, 3000);
   });
 }

@@ -8,12 +8,10 @@ window.onload = () => {
 };
 
 function initCardMachine() {
-  const clickAudio = document.getElementById("click-audio");
   const btnElements = document.getElementsByClassName("btn");
   for (let btnElement of btnElements) {
     btnElement.addEventListener("click", (e) => {
-      clickAudio.currentTime = 0;
-      clickAudio.play();
+      playAudio();
 
       const mOrK = document.querySelector(".mk");
       const textElement = document.getElementById("display-input");
@@ -108,4 +106,20 @@ function renderWallet() {
     };
     walletElement.appendChild(cardElement);
   }
+}
+
+async function playAudioAsync(x = 1, duration) {
+  for (let i = 0; i < x; i++) {
+    console.log("gug", i);
+    await playAudio(duration);
+  }
+}
+async function playAudio(duration) {
+  const clickAudio = document.getElementById("click-audio");
+  if (!duration) duration = clickAudio.duration * 1000;
+  return new Promise((resolve, reject) => {
+    clickAudio.currentTime = 0;
+    clickAudio.play();
+    setTimeout(resolve, duration);
+  });
 }
