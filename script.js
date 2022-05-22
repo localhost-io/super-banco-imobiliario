@@ -17,7 +17,7 @@ function initCardMachine() {
       const textElement = document.getElementById("display-input");
       let txt = textElement.textContent;
       const dataKey = btnElement.getAttribute("data-key");
-      console.log(dataKey, !!txt);
+
       if (dataKey == "Backspace") {
         mOrK.textContent = null;
         textElement.textContent = "0";
@@ -42,10 +42,30 @@ function initCardMachine() {
             alert("Escolha um cartão para enviar o valor");
           } else {
             console.log("transfere " + textElement.textContent);
+
             const value = parseFloat(textElement.textContent);
+
+            const cardOriginOld = getCardStorage(cardOriginElement.id);
+            const cardDestinyOld = getCardStorage(cardDestinyElement.id);
             transfere(cardOriginElement.id, cardDestinyElement.id, value);
-            await showBalance(cardOriginElement.id, textElement);
-            await showBalance(cardDestinyElement.id, textElement);
+            const cardDestinyNew = getCardStorage(cardDestinyElement.id);
+            const cardOriginNew = getCardStorage(cardOriginElement.id);
+
+            await animateValueAsync(
+              textElement,
+              cardOriginOld.saldo,
+              cardOriginNew.saldo
+            );
+
+            await animateValueAsync(
+              textElement,
+              cardDestinyOld.saldo,
+              cardDestinyNew.saldo
+            );
+
+            // await showBalance(cardOriginElement.id, textElement);
+            // await showBalance(cardDestinyElement.id, textElement);
+
             textElement.textContent = "0";
             mOrK.textContent = null;
           }
@@ -122,4 +142,51 @@ async function playAudio(duration) {
     clickAudio.play();
     setTimeout(resolve, duration);
   });
+}
+
+async function animateValueAsync(element, to, from) {
+  element.textContent = to;
+  sleep(1500);
+  await playAudioAsync(3, 150);
+
+  let valueTo = parseFloat(to);
+  let valueFrom = parseFloat(from);
+  const isPlus = valueFrom > valueTo;
+
+  let valueDiff = to - from;
+  if (valueDiff < 0) valueDiff = valueDiff * -1;
+  let diff = 10;
+
+  if (valueDiff > 10000) {
+    diff = 500;
+  } else if (valueDiff > 1000) {
+    diff = 150;
+  } else if (valueDiff > 100) {
+    diff = 100;
+  }
+
+  return new Promise((resolve) => {
+    const intervalId = setInterval(async () => {
+      playAudio();
+      valueTo = isPlus ? valueTo + diff : valueTo - diff;
+      element.textContent = valueTo;
+
+      if (
+        (isPlus && valueTo >= valueFrom) ||
+        (!isPlus && valueTo <= valueFrom)
+      ) {
+        clearInterval(intervalId);
+        element.textContent = valueFrom;
+        await sleep(1500);
+        element.textContent = "-";
+        await sleep(800);
+
+        resolve();
+      }
+    }, 70);
+  });
+}
+
+async function sleep(millis) {
+  return new Promise((resolve) => setTimeout(resolve, millis));
 }
