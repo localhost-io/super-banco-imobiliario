@@ -30,16 +30,26 @@ function initCardMachine() {
           textElement.textContent = value;
         }
 
-        setTimeout(() => {
-          const cardDestinElement = document.querySelector('.card-control.insert-left .card');
+        setTimeout(async () => {
+          const cardDestinyElement = document.querySelector('.card-control.insert-left .card');
           const cardOriginElement = document.querySelector('.card-control.insert-right .card');
 
-          alert("transfere " + textElement.textContent);
-          const value = parseFloat(textElement.textContent);
-          transfere(cardOriginElement.id, cardDestinElement.id, value);
-          textElement.textContent = "0";
-          mOrK.textContent = null;
+          if (!cardDestinyElement) {
+            alert('Escolha um cartão para receber o valor');
+          } else if (!cardOriginElement) {
+            alert('Escolha um cartão para enviar o valor');
+          } else {
+            console.log("transfere " + textElement.textContent);
+            const value = parseFloat(textElement.textContent);
+            transfere(cardOriginElement.id, cardDestinyElement.id, value);
+            await showBalance(cardOriginElement.id, textElement);
+            await showBalance(cardDestinyElement.id, textElement);
+            textElement.textContent = "0";
+            mOrK.textContent = null;
+          }
+
         }, 1500);
+          
       } else if ([...Array(10).keys(), "."].map(String).includes(dataKey)) {
         if (txt == 0) txt = "";
         let value = txt + btnElement.getAttribute("data-key");

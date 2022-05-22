@@ -127,3 +127,18 @@ function createCardElement({ id, holderName, number, brand, validate }) {
 
   return cardElement;
 }
+
+async function showBalance(cardId, textElement) {
+  return new Promise((resolve, reject) => {
+    const cardStorage = getCardStorage(cardId);
+    textElement.textContent = cardStorage.saldo;
+    setTimeout(() => {
+      try {
+        resolve();
+        console.log('realizado...')
+      } catch(e) {
+        reject(e);
+      }
+    }, 3000);
+  });
+}

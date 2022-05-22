@@ -70,17 +70,22 @@ function getCards() {
 }
 
 function transfere(cardOriginId, cardDestinId, value) {
+
   console.log("transfere", cardOriginId, cardDestinId, value);
   const cardOrigin = getCardStorage(cardOriginId);
   const cardDestin = getCardStorage(cardDestinId);
   
-  cardOrigin.saldo = cardOrigin.saldo - value;
-  cardDestin.saldo = cardDestin.saldo + value;
+  if (cardOrigin.saldo >= value) {
+    cardOrigin.saldo = cardOrigin.saldo - value;
+    cardDestin.saldo = cardDestin.saldo + value;
+  
+    setCardStorage(cardOrigin);
+    setCardStorage(cardDestin);
+    
+  } else {
+    alert('Saldo insuficiente');
+  } 
 
-  setCardStorage(cardOrigin);
-  setCardStorage(cardDestin);
-
-  console.log(storage);
 }
 
 function getCardStorage(cardId) {
